@@ -3,16 +3,25 @@ $(document).ready(function(){
     //REFERENCES
     var prevBtn = $('.prev');
     var nextBtn = $('.next');
-    // console.log(prevBtn); //test 
-    // console.log(nextBtn); //test
 
     //Navigation
     prevBtn.click(function(){
-        console.log('prev');
+        navSlide('prev')
     });
     nextBtn.click(function(){
-        console.log('next');
+        navSlide('next')
     });
 
 //End Doc Ready
 });
+
+/****************
+  FUNCTIONS
+ ****************/
+/**
+ * Navigation between slides 
+ * @param {string} direction 
+ */
+function navSlide(direction){
+    console.log(direction); //test
+}
