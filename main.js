@@ -1,55 +1,53 @@
-$(document).ready(function(){
+/*********
+ * SLIDER
+ *********/
 
-    //REFERENCES
-    var prevBtn = $('.prev');
-    var nextBtn = $('.next');
+//REFERENCES
+var prevBtn = $('.prev');
+var nextBtn = $('.next');
+var circle = $('.nav i');
 
-    //Navigation with Mouse
-    prevBtn.click(function(){
-        navSlide('prev')
-    });
-    nextBtn.click(function(){
-        navSlide('next')
-    });
-
-    //Navigation with Keyboard Arrows
-    $(document).keydown(function(event){
-        if(event.keyCode == 37){
-            navSlide('prev');
-        } else if(event.keyCode == 39){
-            navSlide('next');
-        }
-    });
-
-    //Navigation with Keyboard Number
-    $(document).keydown(function(event){     
-        switch(event.keyCode){
-            case 97:
-            case 49:
-                keyboardNum(0);
-                break;
-            case 98:
-            case 50:
-                keyboardNum(1);
-                break;
-            case 99:
-            case 51:
-                keyboardNum(2);
-                break;
-            case 100:
-            case 52:
-                keyboardNum(3);
-                break;
-        }
-    });
-
-    //Navigation with circle
-    var circle = $('.nav i');
-
-    circle.click(clickCircle);
-
-//End Doc Ready
+//Navigation with Mouse
+prevBtn.click(function(){
+    navSlide('prev')
 });
+nextBtn.click(function(){
+    navSlide('next')
+});
+
+//Navigation with Keyboard Arrows
+$(document).keydown(function(event){
+    if(event.keyCode == 37){
+        navSlide('prev');
+    } else if(event.keyCode == 39){
+        navSlide('next');
+    }
+});
+
+//Navigation with Keyboard Number
+$(document).keydown(function(event){     
+    switch(event.keyCode){
+        case 97:
+        case 49:
+            keyboardNum(0);
+            break;
+        case 98:
+        case 50:
+            keyboardNum(1);
+            break;
+        case 99:
+        case 51:
+            keyboardNum(2);
+            break;
+        case 100:
+        case 52:
+            keyboardNum(3);
+            break;
+    }
+});
+
+//Navigation with circle
+circle.click(clickCircle);
 
 /****************
   FUNCTIONS
@@ -63,8 +61,7 @@ function navSlide(direction){
     var activeCircle = $('.nav .active');
 
     //Reset
-    activeImg.removeClass('active');
-    activeCircle.removeClass('active');
+    reset();
 
     //Previous
     if(direction === 'prev'){
@@ -93,13 +90,10 @@ function navSlide(direction){
  * Navigation with click on circle
  */
 function clickCircle(){
-    var activeCircle = $('.nav .active');
-    var activeImg = $('.images .active');
     var image = $('.images img');
 
     //Reset
-    activeImg.removeClass('active');
-    activeCircle.removeClass('active');
+    reset();
 
     $(this).addClass('active');
     image.eq($(this).index()).addClass('active');
@@ -110,15 +104,23 @@ function clickCircle(){
  * @param {number} index 
  */
 function keyboardNum(index){
-    var activeImg = $('.images .active');
-    var activeCircle = $('.nav .active');
     var image = $('.images img');
     var circle = $('.nav i')
 
     //Reset
-    activeImg.removeClass('active');
-    activeCircle.removeClass('active');
+    reset();
 
     image.eq(index).addClass('active');
     circle.eq(index).addClass('active');
+}
+
+/**
+ * Remove class active
+ */
+function reset(){
+    var activeImg = $('.images .active');
+    var activeCircle = $('.nav .active');
+
+    activeImg.removeClass('active');
+    activeCircle.removeClass('active');
 }
