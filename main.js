@@ -23,5 +23,32 @@ $(document).ready(function(){
  * @param {string} direction 
  */
 function navSlide(direction){
-    console.log(direction); //test
+    var activeImg = $('.images .active');
+    var activeCircle = $('.nav .active');
+
+    //Reset
+    activeImg.removeClass('active');
+    activeCircle.removeClass('active');
+
+    //Previous
+    if(direction === 'prev'){
+        if(activeImg.hasClass('first')){
+            $('.images .last').addClass('active');
+            $('.nav .last').addClass('active');
+        } else{
+            activeImg.prev('img').addClass('active');
+            activeCircle.prev('i').addClass('active');
+        }
+    }
+    //Next
+    else {
+        if(activeImg.hasClass('last')){
+            $('.images .first').addClass('active');
+            $('.nav .first').addClass('active');
+        } else{
+            activeImg.next('img').addClass('active');
+            activeCircle.next('i').addClass('active');
+        }
+
+    }
 }
