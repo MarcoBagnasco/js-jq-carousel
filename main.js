@@ -14,13 +14,17 @@ $(document).ready(function(){
 
     //Navigation with Keyboard
     $(document).keydown(function(event){
-        console.log(event.keyCode); //test
         if(event.keyCode == 37){
             navSlide('prev');
         } else if(event.keyCode == 39){
             navSlide('next');
         }
     });
+
+    //Navigation with circle
+    var circle = $('.nav i');
+
+    circle.click(clickCircle);
 
 //End Doc Ready
 });
@@ -61,4 +65,20 @@ function navSlide(direction){
         }
 
     }
+}
+
+/**
+ * Navigation with click on circle
+ */
+function clickCircle(){
+    var activeCircle = $('.nav .active');
+    var activeImg = $('.images .active');
+    var image = $('.images img');
+
+    //Reset
+    activeImg.removeClass('active');
+    activeCircle.removeClass('active');
+
+    $(this).addClass('active');
+    image.eq($(this).index()).addClass('active');
 }
