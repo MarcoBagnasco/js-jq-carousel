@@ -4,12 +4,22 @@ $(document).ready(function(){
     var prevBtn = $('.prev');
     var nextBtn = $('.next');
 
-    //Navigation
+    //Navigation with Mouse
     prevBtn.click(function(){
         navSlide('prev')
     });
     nextBtn.click(function(){
         navSlide('next')
+    });
+
+    //Navigation with Keyboard
+    $(document).keydown(function(event){
+        console.log(event.keyCode); //test
+        if(event.keyCode == 37){
+            navSlide('prev');
+        } else if(event.keyCode == 39){
+            navSlide('next');
+        }
     });
 
 //End Doc Ready
